@@ -2,10 +2,6 @@
   "name": "ai-empire",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "dev": "pnpm run -r dev",
     "build": "pnpm run -r build",
