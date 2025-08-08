@@ -1,23 +1,61 @@
-# ✨ Welcome to Your Spark Template!
-You've just launched your brand-new Spark Template Codespace — everything’s fired up and ready for you to explore, build, and create with Spark!
+# AI Empire - Windows-First Monorepo
 
-This template is your blank canvas. It comes with a minimal setup to help you get started quickly with Spark development.
+A command center for managing AI agents, campaigns, and revenue streams.
 
-🚀 What's Inside?
-- A clean, minimal Spark environment
-- Pre-configured for local development
-- Ready to scale with your ideas
-  
-🧠 What Can You Do?
+## Quick Start (Windows)
 
-Right now, this is just a starting point — the perfect place to begin building and testing your Spark applications.
+1. Install dependencies:
+```powershell
+pnpm install
+```
 
-🧹 Just Exploring?
-No problem! If you were just checking things out and don’t need to keep this code:
+2. Start all services:
+```powershell
+.\scripts\start-all.ps1
+```
 
-- Simply delete your Spark.
-- Everything will be cleaned up — no traces left behind.
+3. Open command center:
+```
+http://localhost:4200
+```
 
-📄 License For Spark Template Resources 
+## Architecture
 
-The Spark Template files and resources from GitHub are licensed under the terms of the MIT license, Copyright GitHub, Inc.
+### Apps
+- **command-center** (Next.js 14) - Main dashboard UI on :4200
+- **aggregator** (Express) - API gateway and health monitoring on :4900  
+- **mcp-bridge** (Express) - Claude MCP tool bridge on :4920
+
+### Packages
+- **service-registry** - Service discovery and mapping
+- **ui** - Shared shadcn/ui components with neon terminal theme
+
+## Services Map
+
+| Service | Port | Purpose |
+|---------|------|---------|
+| AI Empire Core | 4001 | Main AI coordination |
+| JARVIS Core | 7007 | AI assistant |
+| KARIM AI360 | 8003 | AI agent |
+| MAFAR | 5555 | AI service |
+| Taskmaster | 6969 | Job queue |
+| Spark | 3000 | Development |
+| LM Studio | 8080 | Local models |
+| Ollama | 11434 | Local models |
+| Revenue Core | 9000 | Analytics |
+
+## Development
+
+```powershell
+# Start individual services
+cd apps/command-center && pnpm dev
+cd apps/aggregator && pnpm dev
+cd apps/mcp-bridge && pnpm dev
+
+# Kill all ports
+.\scripts\kill-ports.ps1
+```
+
+## Testing
+
+See `TEST.md` for endpoint testing and smoke tests.
